@@ -2,13 +2,16 @@ package lokesh.springframework.service.map;
 
 import java.util.Set;
 
+import org.springframework.stereotype.Service;
+
 import lokesh.springframework.model.Pet;
 import lokesh.springframework.service.CrudService;
 
+@Service
 public class PetServiceMap extends  AbstractMapService<Pet, Long> implements CrudService<Pet, Long> { 
 	@Override
 	public Pet save(Pet object) {
-		super.save(object.getId(), object);
+		super.save(object);
 		return null;
 	}
 

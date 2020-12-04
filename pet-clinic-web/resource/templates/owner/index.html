@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Owner page</title>
+</head>
+<body>
+<h1>list of owners</h1>
+   	<table>
+		<thead>
+			<tr>
+				<td>ID</td>
+				<td>First Name</td>
+				<td>Last Name</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="owner : ${listOwner}">
+				<td th:text="${owner?.id}">1</td>
+				<td th:text="${owner?.fisrtName}">Lokesh</td>
+				<td th:text="${owner?.lastName}">Nemade</td>
+			</tr>
+		</tbody>
+	</table> 
+</body>
+</html>

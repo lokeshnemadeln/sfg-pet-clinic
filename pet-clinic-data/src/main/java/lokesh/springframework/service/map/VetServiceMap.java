@@ -2,15 +2,18 @@ package lokesh.springframework.service.map;
 
 import java.util.Set;
 
-import lokesh.springframework.model.Vet;
-import lokesh.springframework.service.CrudService;
+import org.springframework.stereotype.Service;
 
-public class VetServiceMap extends  AbstractMapService<Vet, Long> implements CrudService<Vet, Long>
+import lokesh.springframework.model.Vet;
+import lokesh.springframework.service.VetService;
+
+@Service
+public class VetServiceMap extends  AbstractMapService<Vet, Long> implements VetService
 {
 
 	@Override
 	public Vet save(Vet object) {
-		super.save(object.getId(), object);
+		super.save(object);
 		return null;
 	}
 

@@ -1,15 +1,17 @@
 package lokesh.springframework.service.map;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.NoSuchElementException;
 import java.util.Set;
-import java.util.function.Predicate;
 
-public abstract class AbstractMapService <T , ID> 
+import lokesh.springframework.model.BaseEntity;
+
+public abstract class AbstractMapService <T extends BaseEntity , ID extends Long> 
 {
-	protected Map <ID , T> map = new HashMap <>();
+	protected Map <Long , T> map = new HashMap <>();
 	Set <T> findAll()
 	{
 		return new HashSet<>(map.values());
@@ -19,26 +21,46 @@ public abstract class AbstractMapService <T , ID>
 	{
 		return map.get(id);
 	}
-	
-	T save(ID id, T object)
+
+	T save(T object)
 	{
-		map.put(id , object);
+		if(object != null)
+		{
+			if(object.getId() == null)
+			{
+				object.setId(getNextID());
+			}
+			map.put(object.getId(), object);
+		}
+		else 
+		{
+			throw new RuntimeException("Object Cannot be null");
+		}
 		return object;
 	}
-	
+
 	void deleteByID(ID id)
 	{
 		map.remove(id);
 	}
-	
+
 	void delete(final T object)
 	{
-		map.entrySet().removeIf(new Predicate<Entry<ID, T>>() {
-			@Override
-			public boolean test(Entry<ID, T> entry) {
-				return entry.getValue().equals(object);
-			}
-		});
+		map.entrySet().removeIf(entry ->entry.getValue().equals(object));
 	}
-	
+
+	private Long getNextID()
+	{
+		Long nextID = null;
+		try
+		{
+			nextID = Collections.max(map.keySet())+1;
+		}
+		catch(NoSuchElementException e)
+		{
+            nextID = 1L;
+		}
+		return nextID;
+	}
+
 }

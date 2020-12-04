@@ -2,14 +2,17 @@ package lokesh.springframework.service.map;
 
 import java.util.Set;
 
-import lokesh.springframework.model.Owner;
-import lokesh.springframework.service.CrudService;
+import org.springframework.stereotype.Service;
 
-public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements CrudService<Owner, Long> {
+import lokesh.springframework.model.Owner;
+import lokesh.springframework.service.OwnerService;
+
+@Service
+public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 
 	@Override
 	public Owner save(Owner object) {
-		super.save(object.getId(), object);
+		super.save( object);
 		return null;
 	}
 
@@ -35,6 +38,12 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 	public void delete(Owner object)
 	{
 		super.delete(object);
+	}
+
+	@Override
+	public Owner findByLastName(String lastName) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
