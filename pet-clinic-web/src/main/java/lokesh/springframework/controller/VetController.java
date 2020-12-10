@@ -21,7 +21,7 @@ public class VetController
 	public String getPetList(Model model)
 	{
 		model.addAttribute("listVet", vetService.findAll());
-		return "vet/index";
+		return "vet/vetList";
 	}
 	
 	

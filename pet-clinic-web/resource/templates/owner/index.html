@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymleaf.org">
+<html lang="en" xmlns:th="http://www.thymleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
 <head>
 <meta charset="ISO-8859-1">
 <title>Owner page</title>
 </head>
 <body>
 <h1>list of owners</h1>
-   	<table>
+   	<table class="table table-striped">
 		<thead>
 			<tr>
-				<td>ID</td>
-				<td>First Name</td>
-				<td>Last Name</td>
+				<th style="width: 150px;">ID</td>
+				<th style="width: 200px;">First Name</td>
+				<th style="width: 120px;">Last Name</td>
 			</tr>
 		</thead>
 		<tbody>
