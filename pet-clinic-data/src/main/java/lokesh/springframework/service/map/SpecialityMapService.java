@@ -5,27 +5,28 @@ import java.util.Set;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
-import lokesh.springframework.model.PetType;
-import lokesh.springframework.service.PetTypeService;
+import lokesh.springframework.model.Speciality;
+import lokesh.springframework.service.SpecialitiesService;
 
-@Service
+@Service 
 @Profile({"default","map"})
-public class PetTypeMapService extends AbstractMapService<PetType, Long> implements PetTypeService{
-
+public class SpecialityMapService extends AbstractMapService<Speciality , Long> implements SpecialitiesService
+{
+	
 	@Override
-	public PetType save(PetType object) {
+	public Speciality save(Speciality object) {
 		// TODO Auto-generated method stub
 		return super.save(object);
 	}
 
 	@Override
-	public PetType findById(Long id) {
+	public Speciality findById(Long id) {
 		// TODO Auto-generated method stub
 		return super.findById(id);
 	}
 
 	@Override
-	public void delete(PetType Object) {
+	public void delete(Speciality Object) {
 		// TODO Auto-generated method stub
 		super.delete(Object);
 	}
@@ -36,9 +37,8 @@ public class PetTypeMapService extends AbstractMapService<PetType, Long> impleme
 		
 	}
 	@Override
-	public Set<PetType> findAll()
+	public Set<Speciality> findAll()
 	{
 		return super.findAll();
 	}
-
 }

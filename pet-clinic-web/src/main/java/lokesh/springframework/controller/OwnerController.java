@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lokesh.springframework.service.OwnerService;
-
+@RequestMapping("/owners")
 @Controller
 public class OwnerController 
 {
@@ -21,6 +21,12 @@ public class OwnerController
 	{
 		model.addAttribute("listOwner", ownerService.findAll());
 		return "owner/index";
+	}
+	
+	@RequestMapping("/find")
+	public String findOwners()
+	{
+		return"owner/notImplemented";
 	}
 
 }
